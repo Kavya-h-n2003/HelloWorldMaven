@@ -53,7 +53,7 @@
             <index>true</index>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>com.Divya.HelloMaven.App</mainClass>
+              <mainClass>com.divya.HelloMaven.App</mainClass>
             </manifest>
             <manifestEntries>
               <mode>development</mode>
