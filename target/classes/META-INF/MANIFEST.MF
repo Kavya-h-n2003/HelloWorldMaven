@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 21
+Main-Class: com.Divya.HelloMaven.App
+Created-By: Maven Integration for Eclipse
+key: value
+mode: development
+url: http://www.example.com
+
