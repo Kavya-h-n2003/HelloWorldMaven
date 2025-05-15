@@ -2,7 +2,6 @@ pipeline {
     agent any
     tools {
         maven 'maven'
-        git 'Git'  // Add this line only if you named it "Git" in Global Tool Configuration
     }
     stages {
         stage('Checkout') {
