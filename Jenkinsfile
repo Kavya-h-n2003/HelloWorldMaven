@@ -1,28 +1,51 @@
 pipeline {
     agent any
+
     tools {
-        maven 'maven' // Make sure the name matches the Maven installation in Jenkins
+        maven 'maven' // Ensure this matches the Maven installation name in Jenkins
     }
+
+    environment {
+        JAR_NAME = 'HelloWorldMaven-0.0.1-SNAPSHOT.jar'
+    }
+
     stages {
         stage('Checkout') {
             steps {
+                echo 'Checking out source code...'
                 git branch: 'main', url: 'https://github.com/Kavya-h-n2003/HelloWorldMaven.git'
             }
         }
+
         stage('Build') {
             steps {
-                sh 'mvn clean package'
+                echo 'Building project using Maven...'
+                bat 'mvn clean package'
             }
         }
+
         stage('Test') {
             steps {
-                sh 'mvn test'
+                echo 'Running tests...'
+                bat 'mvn test'
             }
         }
+
         stage('Run Application') {
             steps {
-                sh 'java -jar target/HelloMaven-0.0.1-SNAPSHOT.jar'
+                echo 'Running the application...'
+                bat 'dir target' // View files in target folder (for debugging)
+                bat "java -jar target\\%JAR_NAME%"
             }
+        }
+    }
+
+    post {
+        failure {
+            echo 'Pipeline failed. Check the logs for errors.'
+        }
+        success {
+            echo 'Pipeline completed successfully!'
         }
     }
 }
